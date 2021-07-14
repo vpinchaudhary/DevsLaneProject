@@ -3,7 +3,7 @@ import React from 'react'
 interface Props {}
 
 const Dashboard: React.FC<Props> = (props) => {
-  return <></>
+  return <h2>this is dashboard</h2>
 }
 
 Dashboard.defaultProps = {}
