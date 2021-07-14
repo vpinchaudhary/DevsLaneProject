@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
-import Container from './Components/Container'
+import Container from './Pages/Container'
 import AuthPage from './Pages/AuthPage'
 import ErrorPage from './Pages/ErrorPage'
 
