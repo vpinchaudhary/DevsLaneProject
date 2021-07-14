@@ -8,7 +8,10 @@ const SignupPage: React.FC<Props> = (props) => {
     <div>
       <h2>This is sign up page</h2>
       <h3>
-        Already have an account Click here to <Link to='/login'>Login</Link>
+        Already have an account Click here to{' '}
+        <Link to='/login' className='text-blue-500'>
+          Login
+        </Link>
       </h3>
     </div>
   )
