@@ -10,18 +10,20 @@ interface Props {}
 const Container: React.FC<Props> = (props) => {
   return (
     <Switch>
-      <div className='flex'>
-        <Sidebar />
-        <Route path='/dashboard'>
-          <Dashboard />
-        </Route>
-        <Route path='/recordings'>
-          <Recordings />
-        </Route>
-        <Route path='/batch/:batchNo/lecture/:lectureNo'>
-          <LecturePage />
-        </Route>
-      </div>
+      <>
+        <div className='flex'>
+          <Sidebar />
+          <Route path='/dashboard'>
+            <Dashboard />
+          </Route>
+          <Route path='/recordings'>
+            <Recordings />
+          </Route>
+          <Route path='/batch/:batchNo/lecture/:lectureNo'>
+            <LecturePage />
+          </Route>
+        </div>
+      </>
     </Switch>
   )
 }

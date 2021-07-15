@@ -9,7 +9,7 @@ const Recordings: React.FC<Props> = (props) => {
       this is recodings page
       <ul>
         {[...Array(10)].map((_, index) => (
-          <li>
+          <li key={index}>
             <Link
               className='text-blue-500'
               to={'/batch/1/lecture/' + (index + 1)}
