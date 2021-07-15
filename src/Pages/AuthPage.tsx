@@ -8,17 +8,15 @@ interface Props {}
 
 const AuthPage: React.FC<Props> = (props) => {
   return (
-    <div className='flex justify-between'>
-      <div>
-        <Switch>
-          <Route path='/login'>
-            <LoginPage />
-          </Route>
-          <Route path='/signup'>
-            <SignupPage />
-          </Route>
-        </Switch>
-      </div>
+    <div className='flex justify-between md:flex-row flex-col-reverse w-full'>
+      <Switch>
+        <Route path='/login'>
+          <LoginPage />
+        </Route>
+        <Route path='/signup'>
+          <SignupPage />
+        </Route>
+      </Switch>
       <AuthHero />
     </div>
   )
