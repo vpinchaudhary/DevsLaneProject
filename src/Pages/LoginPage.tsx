@@ -7,6 +7,7 @@ import * as yup from 'yup'
 import { useFormik } from 'formik'
 import InputTexts from '../Components/InputTexts'
 import Toggle from '../Components/Toggle'
+import AuthFooter from '../Components/AuthFooter'
 
 interface Props {}
 
@@ -32,14 +33,12 @@ const LoginPage: React.FC<Props> = (props) => {
       }),
     })
   return (
-    <div className='min-h-screen flex justify-center items-center py-12 px-4 sm:px-6 lg:px-8 flex-1'>
-      <div className='max-w-md w-full space-y-8'>
+    <div className='min-h-screen flex justify-center items-center px-10 sm:px-6 lg:px-8 flex-1'>
+      <div className='max-w-md w-full space-y-12'>
         <div>
-          <h2 className='mt-6 text-4xl font-medium text-heading-200'>
-            Log in to your{' '}
-            <span className='uppercase text-primary font-semibold'>
-              account
-            </span>
+          <h2 className='text-4xl font-medium text-heading-200'>
+            Log in to{' '}
+            <span className='uppercase text-primary font-semibold'>CORK</span>
           </h2>
           <p className='mt-2 font-semibold text-heading-200'>
             New Here?{' '}
@@ -51,7 +50,7 @@ const LoginPage: React.FC<Props> = (props) => {
             </Link>
           </p>
         </div>
-        <form className='mt-8 space-y-6' onSubmit={handleSubmit}>
+        <form className='mt-8 space-y-10' onSubmit={handleSubmit}>
           <div className='relative'>
             <InputTexts
               {...getFieldProps('email')}
@@ -78,13 +77,13 @@ const LoginPage: React.FC<Props> = (props) => {
               icon={<FiLock className='text-primary text-2xl absolute' />}
             />
           </div>
-          <div className='flex items-center w-full justify-between'>
+          <div className='flex md:flex-row flex-col md:pt-0 pt-6 md:items-center w-full justify-between'>
             <Toggle
               title='Show Password'
               setShow={() => setShowPass(!showPass)}
               showPass={showPass}
             />
-            <div className='relative'>
+            <div className='relative md:pt-0 pt-6'>
               <Button type='submit' loading={isSubmitting} title='Log in' />
               {isSubmitting && (
                 <div>
@@ -116,6 +115,7 @@ const LoginPage: React.FC<Props> = (props) => {
             </Link>
           </div>
         </form>
+        <AuthFooter />
       </div>
     </div>
   )

@@ -5,7 +5,7 @@ interface Props {}
 const AuthHero: React.FC<Props> = (props) => {
   return (
     <div
-      className='h-screen flex-1 md:flex justify-center items-center hidden'
+      className='h-screen flex-1 lg:flex justify-center items-center hidden'
       style={{ backgroundColor: '#292929' }}
     >
       <svg

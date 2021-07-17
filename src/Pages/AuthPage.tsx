@@ -8,7 +8,7 @@ interface Props {}
 
 const AuthPage: React.FC<Props> = (props) => {
   return (
-    <div className='flex justify-between md:flex-row flex-col-reverse w-full'>
+    <div className='flex justify-between lg:flex-row flex-col-reverse w-full'>
       <Switch>
         <Route path='/login'>
           <LoginPage />
