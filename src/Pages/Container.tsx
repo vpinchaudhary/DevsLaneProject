@@ -1,5 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
+import Header from '../Components/Header'
+import HeaderBanner from '../Components/HeaderBanner'
 import Sidebar from '../Components/Sidebar'
 import Dashboard from './Dashboard'
 import LecturePage from './LecturePage'
@@ -11,7 +13,12 @@ const Container: React.FC<Props> = (props) => {
   return (
     <Switch>
       <>
-        <div className='flex'>
+        <div className='fixed w-full'>
+          <Header />
+          <HeaderBanner />
+        </div>
+
+        {/* <div className='flex'>
           <Sidebar />
           <Route path='/dashboard'>
             <Dashboard />
@@ -22,7 +29,7 @@ const Container: React.FC<Props> = (props) => {
           <Route path='/batch/:batchNo/lecture/:lectureNo'>
             <LecturePage />
           </Route>
-        </div>
+        </div> */}
       </>
     </Switch>
   )
