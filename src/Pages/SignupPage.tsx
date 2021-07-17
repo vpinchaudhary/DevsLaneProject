@@ -98,7 +98,7 @@ const SignupPage: React.FC<Props> = (props) => {
                 className='ml-2 block text-heading-100'
               >
                 I agree to the{' '}
-                <a href='#' className='text-primary'>
+                <a href='/#' className='text-primary'>
                   terms and conditions
                 </a>
               </label>

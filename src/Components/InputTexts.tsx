@@ -1,6 +1,5 @@
 import React from 'react'
 import { InputHTMLAttributes } from 'react'
-import { IconType } from 'react-icons/lib'
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   icon?: React.ReactNode
