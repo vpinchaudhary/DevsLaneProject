@@ -2,13 +2,12 @@ import React from 'react'
 import { ButtonHTMLAttributes } from 'react'
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
-  type?: 'submit' | 'reset' | 'button'
   theme?: string
   title?: string
   loading?: boolean
 }
 
-const Button: React.FC<Props> = ({ type, theme, title, loading, ...props }) => {
+const Button: React.FC<Props> = ({ theme, title, loading, ...props }) => {
   let buttonTheme = ''
   let themeColor = ''
   if (theme === 'default-primary') {
@@ -18,7 +17,7 @@ const Button: React.FC<Props> = ({ type, theme, title, loading, ...props }) => {
 
   return (
     <button
-      type={type}
+      {...props}
       className={
         'flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md ' +
         buttonTheme

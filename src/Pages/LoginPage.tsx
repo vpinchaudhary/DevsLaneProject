@@ -4,42 +4,38 @@ import { FiUser, FiLock } from 'react-icons/fi'
 import { FaCircle } from 'react-icons/fa'
 import { BiLoaderAlt } from 'react-icons/bi'
 import Button from '../Components/Button'
+import * as yup from 'yup'
+import { useFormik } from 'formik'
 
 interface Props {}
 
 const LoginPage: React.FC<Props> = (props) => {
   const [showPass, setShowPass] = useState(false)
-  const [data, setData] = useState({ email: '', password: '' })
-  const [dirty, setDirty] = useState({ email: false, password: false })
-  const [loading, setLoading] = useState(false)
   const history = useHistory()
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setData({ ...data, [e.target.name]: e.target.value })
-  }
-
-  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    setDirty({ ...dirty, [e.target.name]: true })
-  }
-
-  let emailError = ''
-  let passwordError = ''
-
-  if (!data.email) {
-    emailError = 'Email address is required'
-  } else if (
-    !data.email.match(
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-    )
-  ) {
-    emailError = 'Enter a valid email address'
-  }
-
-  if (!data.password) {
-    passwordError = 'Password address is required'
-  } else if (data.password.length < 8) {
-    passwordError = 'Password must be atleast 8 characters long'
-  }
+  //using useFormik to make form data which contains email and password
+  const {
+    getFieldProps,
+    handleSubmit,
+    isValid,
+    isSubmitting,
+    touched,
+    errors,
+  } = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    onSubmit: (values) => {
+      setTimeout(() => {
+        console.log(values)
+      }, 5000)
+    },
+    validationSchema: yup.object().shape({
+      email: yup.string().email().required(),
+      password: yup.string().required().min(8),
+    }),
+  })
   return (
     <div className='min-h-screen flex justify-center items-center py-12 px-4 sm:px-6 lg:px-8 flex-1'>
       <div className='max-w-md w-full space-y-8'>
@@ -60,17 +56,7 @@ const LoginPage: React.FC<Props> = (props) => {
             </Link>
           </p>
         </div>
-        <form
-          className='mt-8 space-y-6'
-          onSubmit={(event) => {
-            event.preventDefault()
-            if (emailError || passwordError) {
-              return
-            }
-            setLoading(true)
-            history.push('/dashboard')
-          }}
-        >
+        <form className='mt-8 space-y-6' onSubmit={handleSubmit}>
           <div className='relative'>
             <label htmlFor='email-address' className='sr-only'>
               Email Address
@@ -78,20 +64,17 @@ const LoginPage: React.FC<Props> = (props) => {
             <span className='flex items-center relative'>
               <FiUser className='text-primary text-2xl absolute' />
               <input
+                {...getFieldProps('email')}
                 type='email'
                 className='w-full px-8 py-4 border-b border-gray-300 placeholder-gray-400 text-heading-200 outline-none focus:border-primary sm:text-sm'
                 placeholder='Email Address'
                 id='email-address'
-                name='email'
                 required
                 autoComplete='email'
-                value={data.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
               />
             </span>
             <div className='text-red-600 text-sm absolute'>
-              {dirty.email && emailError}
+              {touched.email && errors.email}
             </div>
           </div>
           <div className='relative'>
@@ -101,20 +84,17 @@ const LoginPage: React.FC<Props> = (props) => {
             <span className='flex items-center relative'>
               <FiLock className='text-primary text-2xl absolute' />
               <input
+                {...getFieldProps('password')}
                 type={showPass ? 'text' : 'password'}
                 className='w-full px-8 py-4 border-b border-gray-300 placeholder-gray-400 text-heading-200 outline-none focus:border-primary sm:text-sm'
                 placeholder='Password'
                 id='password'
-                name='password'
                 required
                 autoComplete='current-password'
-                value={data.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
               />
             </span>
             <div className='text-red-600 text-sm absolute'>
-              {dirty.password && passwordError}
+              {touched.password && errors.password}
             </div>
           </div>
           <div className='flex items-center w-full justify-between'>
@@ -143,8 +123,8 @@ const LoginPage: React.FC<Props> = (props) => {
             </div>
 
             <div className='relative'>
-              <Button type='submit' loading={loading} title='Log in' />
-              {loading && (
+              <Button type='submit' loading={isSubmitting} title='Log in' />
+              {isSubmitting && (
                 <div>
                   <BiLoaderAlt className='absolute bottom-1 text-white font-extrabold right-6 text-3xl animate-spin ease-in-out' />
                 </div>
