@@ -9,6 +9,7 @@ import Button from '../Components/Button'
 import InputTexts from '../Components/InputTexts'
 import Toggle from '../Components/Toggle'
 import AuthFooter from '../Components/AuthFooter'
+import { Switch } from '@headlessui/react'
 
 interface Props {}
 
@@ -105,11 +106,24 @@ const SignupPage: React.FC<Props> = (props) => {
             </div>
           </div>
           <div className='flex md:flex-row flex-col md:items-center w-full justify-between'>
-            <Toggle
-              title='Show Password'
-              setShow={() => setShowPass(!showPass)}
-              showPass={showPass}
-            />
+            <div className='flex items-center'>
+              <Switch.Group>
+                <Switch.Label className='mr-4'>Show Password</Switch.Label>
+                <Switch
+                  checked={showPass}
+                  onChange={setShowPass}
+                  className={`transform transition ease-in-out duration-200 ${
+                    showPass ? 'bg-blue-600' : 'bg-gray-200'
+                  } relative inline-flex items-center h-6 rounded-full w-11`}
+                >
+                  <span
+                    className={`transform transition ease-in-out duration-200 ${
+                      showPass ? 'translate-x-6' : 'translate-x-1'
+                    } inline-block w-4 h-4 transform bg-white rounded-full`}
+                  />
+                </Switch>
+              </Switch.Group>
+            </div>
             <div className='relative md:pt-0 pt-6'>
               <Button
                 type='submit'
