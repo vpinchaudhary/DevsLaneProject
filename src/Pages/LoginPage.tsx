@@ -6,7 +6,6 @@ import Button from '../Components/Button'
 import * as yup from 'yup'
 import { useFormik } from 'formik'
 import InputTexts from '../Components/InputTexts'
-import Toggle from '../Components/Toggle'
 import AuthFooter from '../Components/AuthFooter'
 import { Switch } from '@headlessui/react'
 

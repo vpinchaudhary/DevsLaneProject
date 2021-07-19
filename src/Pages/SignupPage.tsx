@@ -7,7 +7,6 @@ import { FiUser, FiLock } from 'react-icons/fi'
 import { SiMailDotRu } from 'react-icons/si'
 import Button from '../Components/Button'
 import InputTexts from '../Components/InputTexts'
-import Toggle from '../Components/Toggle'
 import AuthFooter from '../Components/AuthFooter'
 import { Switch } from '@headlessui/react'
 

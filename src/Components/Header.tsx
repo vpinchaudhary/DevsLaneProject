@@ -1,6 +1,10 @@
 import React from 'react'
 import { RiSearchLine } from 'react-icons/ri'
 import { FiMail, FiBell, FiSquare } from 'react-icons/fi'
+import { FaCircle } from 'react-icons/fa'
+//@ts-ignore
+import ReactCountryFlag from 'react-country-flag'
+import { Menu } from '@headlessui/react'
 
 interface Props {}
 
@@ -85,10 +89,67 @@ const Header: React.FC<Props> = (props) => {
       </div>
       <div className='flex md:mt-2 space-x-4 absolute right-4'>
         <RiSearchLine className='md:hidden text-2xl text-white' />
-        <RiSearchLine className='text-2xl text-white' />
+        <div>
+          <Menu as='div' className='relative'>
+            <Menu.Button>
+              <div>
+                <img
+                  className='h-6 w-6'
+                  src='https://designreset.com/cork/ltr/demo4/assets/img/ca.png'
+                  alt=''
+                />
+              </div>
+            </Menu.Button>
+            <Menu.Items className='absolute  flex flex-col w-32 shadow-md rounded-md bg-white'>
+              <Menu.Item>
+                {({ active }) => (
+                  <div className='flex w-full justify-between px-2 py-3'>
+                    <img
+                      className='h-6 w-6'
+                      src='https://designreset.com/cork/ltr/demo4/assets/img/fr.png'
+                      alt=''
+                    />
+                    <h3>French</h3>
+                  </div>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <div className='flex w-full justify-between px-2 py-3'>
+                    <img
+                      className='h-6 w-6'
+                      src='https://designreset.com/cork/ltr/demo4/assets/img/jp.png'
+                      alt=''
+                    />
+                    <h3>Japanese</h3>
+                  </div>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <div className='flex w-full justify-between px-2 py-3'>
+                    <img
+                      className='h-6 w-6'
+                      src='https://designreset.com/cork/ltr/demo4/assets/img/de.png'
+                      alt=''
+                    />
+                    <h3>German</h3>
+                  </div>
+                )}
+              </Menu.Item>
+            </Menu.Items>
+          </Menu>
+        </div>
         <FiMail className='text-2xl text-white' />
-        <FiBell className='text-2xl text-white' />
-        <FiSquare className='text-2xl text-white' />
+        <div className='relative'>
+          <FaCircle className='absolute text-xs right-0 text-green-500' />
+          <FiBell className='text-2xl text-white' />
+        </div>
+        <img
+          className='h-6 w-6 rounded-md'
+          src='https://designreset.com/cork/ltr/demo4/assets/img/profile-16.jpeg'
+          alt=''
+        />
       </div>
     </div>
   )
