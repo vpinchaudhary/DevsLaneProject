@@ -23,7 +23,7 @@ const InputTexts: React.FC<Props> = ({
           {placeholder}
         </label>
         <span className='flex items-center relative'>
-          {icon}
+          <span className='text-primary text-2xl absolute'>{icon}</span>
           <input
             {...rest}
             className={

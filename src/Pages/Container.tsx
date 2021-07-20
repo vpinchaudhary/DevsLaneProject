@@ -13,23 +13,13 @@ const Container: React.FC<Props> = (props) => {
   return (
     <Switch>
       <>
-        <div className='fixed w-full'>
+        <div id='header' className='sticky top-0 w-full'>
           <Header />
           <HeaderBanner />
         </div>
-
-        {/* <div className='flex'>
+        <div className='flex'>
           <Sidebar />
-          <Route path='/dashboard'>
-            <Dashboard />
-          </Route>
-          <Route path='/recordings'>
-            <Recordings />
-          </Route>
-          <Route path='/batch/:batchNo/lecture/:lectureNo'>
-            <LecturePage />
-          </Route>
-        </div> */}
+        </div>
       </>
     </Switch>
   )

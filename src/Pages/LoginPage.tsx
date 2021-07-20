@@ -61,7 +61,7 @@ const LoginPage: React.FC<Props> = (props) => {
               autoComplete='email'
               touched={touched.email}
               errors={errors.email}
-              icon={<FiUser className='text-primary text-2xl absolute' />}
+              icon={<FiUser />}
             />
           </div>
           <div className='relative'>
@@ -74,7 +74,7 @@ const LoginPage: React.FC<Props> = (props) => {
               autoComplete='current-password'
               touched={touched.password}
               errors={errors.password}
-              icon={<FiLock className='text-primary text-2xl absolute' />}
+              icon={<FiLock />}
             />
           </div>
           <div className='flex md:flex-row flex-col md:pt-0 pt-6 md:items-center w-full justify-between'>

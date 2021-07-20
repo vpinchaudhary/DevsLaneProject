@@ -61,7 +61,7 @@ const SignupPage: React.FC<Props> = (props) => {
             required
             touched={touched.username}
             errors={errors.username}
-            icon={<FiUser className='text-primary text-2xl absolute' />}
+            icon={<FiUser />}
           />
           <InputTexts
             {...getFieldProps('email')}
@@ -72,7 +72,7 @@ const SignupPage: React.FC<Props> = (props) => {
             autoComplete='email'
             touched={touched.email}
             errors={errors.email}
-            icon={<SiMailDotRu className='text-primary text-xl absolute' />}
+            icon={<SiMailDotRu />}
           />
           <InputTexts
             {...getFieldProps('password')}
@@ -83,7 +83,7 @@ const SignupPage: React.FC<Props> = (props) => {
             autoComplete='current-password'
             touched={touched.password}
             errors={errors.password}
-            icon={<FiLock className='text-primary text-2xl absolute' />}
+            icon={<FiLock />}
           />
           <div className='flex flex-col w-full justify-around'>
             <div className='items-center flex'>
