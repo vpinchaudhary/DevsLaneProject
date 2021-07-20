@@ -1,9 +1,7 @@
 import React from 'react'
 import { RiSearchLine } from 'react-icons/ri'
-import { FiMail, FiBell, FiSquare } from 'react-icons/fi'
+import { FiMail, FiBell } from 'react-icons/fi'
 import { FaCircle } from 'react-icons/fa'
-//@ts-ignore
-import ReactCountryFlag from 'react-country-flag'
 import { Menu } from '@headlessui/react'
 
 interface Props {}

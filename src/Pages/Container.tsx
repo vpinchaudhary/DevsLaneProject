@@ -1,11 +1,8 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Switch } from 'react-router-dom'
 import Header from '../Components/Header'
 import HeaderBanner from '../Components/HeaderBanner'
 import Sidebar from '../Components/Sidebar'
-import Dashboard from './Dashboard'
-import LecturePage from './LecturePage'
-import Recordings from './Recordings'
 
 interface Props {}
 

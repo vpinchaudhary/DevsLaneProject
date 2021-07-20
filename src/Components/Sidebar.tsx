@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import SidebarComp from './SidebarComp'
 import SidebarLink from './SidebarLink'
 import {
@@ -14,13 +14,18 @@ import {
 interface Props {}
 
 const Sidebar: React.FC<Props> = (props) => {
+  const [height, setHeight] = useState('0')
+  useEffect(() => {
+    setHeight(
+      `calc(100vh - ${document.getElementById('header')!.offsetHeight}px)`
+    )
+  }, [])
+
   return (
     <div
-      className='w-1/6 bg-gray-100 space-y-2 p-5 overflow-y-scroll'
+      className='lg:w-1/6 md:w-1/4 w-2/3 bg-gray-100 space-y-2 p-5 overflow-y-scroll'
       style={{
-        height: `calc(100vh - ${
-          document.getElementById('header')!.offsetHeight
-        }px)`,
+        height: height,
       }}
     >
       <SidebarComp title='Dashboard' icon={<FiHome />}>
