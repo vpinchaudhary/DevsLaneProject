@@ -3,7 +3,7 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import Container from './Pages/Container'
 import AuthPage from './Pages/AuthPage'
 import ErrorPage from './Pages/ErrorPage'
-import Alerts from './Components/Alerts/Alerts'
+import Avatar from './Components/Avatar/Avatar'
 
 interface Props {}
 
@@ -12,8 +12,7 @@ const App: React.FC<Props> = (props) => {
     <BrowserRouter>
       <Switch>
         <Route path={['/login', '/signup']} exact>
-          <Alerts title='primary' message='hello' theme='warning'></Alerts>
-          {/* <AuthPage /> */}
+          <AuthPage />
         </Route>
         <Route
           path={[
