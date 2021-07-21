@@ -5,7 +5,7 @@ import { useFormik } from 'formik'
 import { BiLoaderAlt } from 'react-icons/bi'
 import { FiUser, FiLock } from 'react-icons/fi'
 import { SiMailDotRu } from 'react-icons/si'
-import Button from '../Components/Button'
+import Button from '../Components/Button/Button'
 import InputTexts from '../Components/InputTexts'
 import AuthFooter from '../Components/AuthFooter'
 import { Switch } from '@headlessui/react'
@@ -17,24 +17,29 @@ const SignupPage: React.FC<Props> = (props) => {
   const history = useHistory()
 
   //using useFormik to make form data which contains email and password
-  const { getFieldProps, handleSubmit, isSubmitting, touched, errors } =
-    useFormik({
-      initialValues: {
-        username: '',
-        email: '',
-        password: '',
-      },
-      onSubmit: () => {
-        setTimeout(() => {
-          history.push('/login')
-        }, 2000)
-      },
-      validationSchema: yup.object().shape({
-        username: yup.string().required().lowercase().max(15),
-        email: yup.string().email().required(),
-        password: yup.string().required().min(8),
-      }),
-    })
+  const {
+    getFieldProps,
+    handleSubmit,
+    isSubmitting,
+    touched,
+    errors,
+  } = useFormik({
+    initialValues: {
+      username: '',
+      email: '',
+      password: '',
+    },
+    onSubmit: () => {
+      setTimeout(() => {
+        history.push('/login')
+      }, 2000)
+    },
+    validationSchema: yup.object().shape({
+      username: yup.string().required().lowercase().max(15),
+      email: yup.string().email().required(),
+      password: yup.string().required().min(8),
+    }),
+  })
   return (
     <div className='min-h-screen flex justify-center items-center px-4 sm:px-6 lg:px-8 flex-1'>
       <div className='max-w-md w-full space-y-12'>

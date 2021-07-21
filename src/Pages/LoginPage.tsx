@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { FiUser, FiLock } from 'react-icons/fi'
 import { BiLoaderAlt } from 'react-icons/bi'
-import Button from '../Components/Button'
+import Button from '../Components/Button/Button'
 import * as yup from 'yup'
 import { useFormik } from 'formik'
 import InputTexts from '../Components/InputTexts'
@@ -16,22 +16,27 @@ const LoginPage: React.FC<Props> = (props) => {
   const history = useHistory()
 
   //using useFormik to make form data which contains email and password
-  const { getFieldProps, handleSubmit, isSubmitting, touched, errors } =
-    useFormik({
-      initialValues: {
-        email: '',
-        password: '',
-      },
-      onSubmit: () => {
-        setTimeout(() => {
-          history.push('/dashboard')
-        }, 2000)
-      },
-      validationSchema: yup.object().shape({
-        email: yup.string().email().required(),
-        password: yup.string().required().min(8),
-      }),
-    })
+  const {
+    getFieldProps,
+    handleSubmit,
+    isSubmitting,
+    touched,
+    errors,
+  } = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    onSubmit: () => {
+      setTimeout(() => {
+        history.push('/dashboard')
+      }, 2000)
+    },
+    validationSchema: yup.object().shape({
+      email: yup.string().email().required(),
+      password: yup.string().required().min(8),
+    }),
+  })
   return (
     <div className='min-h-screen flex justify-center items-center px-10 sm:px-6 lg:px-8 flex-1'>
       <div className='max-w-md w-full space-y-12'>
