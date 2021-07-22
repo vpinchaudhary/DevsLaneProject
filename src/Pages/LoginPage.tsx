@@ -102,7 +102,12 @@ const LoginPage: React.FC<Props> = (props) => {
               </Switch.Group>
             </div>
             <div className='relative md:pt-0 pt-6'>
-              <Button type='submit' loading={isSubmitting} title='Log in' />
+              <Button
+                type='submit'
+                loading={isSubmitting}
+                theme='primary'
+                title='Log in'
+              />
               {isSubmitting && (
                 <div>
                   <BiLoaderAlt className='absolute bottom-1 text-white font-extrabold right-6 text-3xl animate-spin ease-in-out' />
