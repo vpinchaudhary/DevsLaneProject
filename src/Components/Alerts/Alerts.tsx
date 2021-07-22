@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { IoClose } from 'react-icons/io5'
-import { unmountComponentAtNode } from 'react-dom'
 
 export interface Props {
   title?: string
@@ -10,6 +9,8 @@ export interface Props {
 }
 
 const Alerts: React.FC<Props> = (props) => {
+  const [show, setShow] = useState<boolean>(true)
+
   let className = ''
   switch (props.theme) {
     case 'primary':
@@ -39,31 +40,30 @@ const Alerts: React.FC<Props> = (props) => {
       break
   }
 
-  const handleClick = () => {
-    unmountComponentAtNode(document.getElementById('root')!)
-  }
-
   return (
     <>
-      <div
-        className={
-          'flex justify-between px-5 py-3 max-w-3xl mx-auto items-center rounded-md m-4 ' +
-          className
-        }
-      >
-        <span>
-          <strong>{props.title}</strong> {props.message}
-        </span>
-        <button
-          type='button'
+      {show && (
+        <div
+          id='alert'
           className={
-            'outline-none cursor-pointer ' + (!props.outline && className)
+            'flex justify-between px-5 py-3 max-w-3xl mx-auto items-center rounded-md m-4 ' +
+            className
           }
-          onClick={handleClick}
         >
-          <IoClose />
-        </button>
-      </div>
+          <span>
+            <strong>{props.title}</strong> {props.message}
+          </span>
+          <button
+            type='button'
+            className={
+              'outline-none cursor-pointer ' + (!props.outline && className)
+            }
+            onClick={() => setShow(false)}
+          >
+            <IoClose />
+          </button>
+        </div>
+      )}
     </>
   )
 }
