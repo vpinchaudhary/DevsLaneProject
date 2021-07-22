@@ -1,14 +1,15 @@
 import React from 'react'
 import { InputHTMLAttributes } from 'react'
+import { IconType } from 'react-icons/lib'
 
-interface Props extends InputHTMLAttributes<HTMLInputElement> {
-  icon?: React.ReactNode
+export interface Props extends InputHTMLAttributes<HTMLInputElement> {
+  icon?: IconType
   placeholder?: string
   touched?: boolean
   errors?: string
 }
 
-const InputTexts: React.FC<Props> = ({
+const Input: React.FC<Props> = ({
   icon,
   placeholder,
   touched,
@@ -16,6 +17,7 @@ const InputTexts: React.FC<Props> = ({
   errors,
   ...rest
 }) => {
+  const Icon = icon
   return (
     <>
       <div className='relative'>
@@ -23,7 +25,7 @@ const InputTexts: React.FC<Props> = ({
           {placeholder}
         </label>
         <span className='flex items-center relative'>
-          <span className='text-primary text-2xl absolute'>{icon}</span>
+          {Icon && <Icon className='text-primary text-2xl absolute' />}
           <input
             {...rest}
             className={
@@ -39,6 +41,9 @@ const InputTexts: React.FC<Props> = ({
   )
 }
 
-InputTexts.defaultProps = {}
+Input.defaultProps = {
+  touched: false,
+  errors: '',
+}
 
-export default React.memo(InputTexts)
+export default React.memo(Input)

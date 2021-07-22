@@ -5,7 +5,7 @@ import { BiLoaderAlt } from 'react-icons/bi'
 import Button from '../Components/Button/Button'
 import * as yup from 'yup'
 import { useFormik } from 'formik'
-import InputTexts from '../Components/InputTexts'
+import Input from '../Components/Input/Input'
 import AuthFooter from '../Components/AuthFooter'
 import { Switch } from '@headlessui/react'
 
@@ -57,7 +57,7 @@ const LoginPage: React.FC<Props> = (props) => {
         </div>
         <form className='mt-8 space-y-10' onSubmit={handleSubmit}>
           <div className='relative'>
-            <InputTexts
+            <Input
               {...getFieldProps('email')}
               type='email'
               placeholder='Email Address'
@@ -66,11 +66,11 @@ const LoginPage: React.FC<Props> = (props) => {
               autoComplete='email'
               touched={touched.email}
               errors={errors.email}
-              icon={<FiUser />}
+              icon={FiUser}
             />
           </div>
           <div className='relative'>
-            <InputTexts
+            <Input
               {...getFieldProps('password')}
               type={showPass ? 'text' : 'password'}
               placeholder='Password'
@@ -79,7 +79,7 @@ const LoginPage: React.FC<Props> = (props) => {
               autoComplete='current-password'
               touched={touched.password}
               errors={errors.password}
-              icon={<FiLock />}
+              icon={FiLock}
             />
           </div>
           <div className='flex md:flex-row flex-col md:pt-0 pt-6 md:items-center w-full justify-between'>

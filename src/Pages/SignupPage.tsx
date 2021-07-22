@@ -6,7 +6,7 @@ import { BiLoaderAlt } from 'react-icons/bi'
 import { FiUser, FiLock } from 'react-icons/fi'
 import { SiMailDotRu } from 'react-icons/si'
 import Button from '../Components/Button/Button'
-import InputTexts from '../Components/InputTexts'
+import Input from '../Components/Input/Input'
 import AuthFooter from '../Components/AuthFooter'
 import { Switch } from '@headlessui/react'
 
@@ -58,7 +58,7 @@ const SignupPage: React.FC<Props> = (props) => {
           </p>
         </div>
         <form className='mt-8 space-y-10' onSubmit={handleSubmit}>
-          <InputTexts
+          <Input
             {...getFieldProps('username')}
             type='text'
             placeholder='Username'
@@ -66,9 +66,9 @@ const SignupPage: React.FC<Props> = (props) => {
             required
             touched={touched.username}
             errors={errors.username}
-            icon={<FiUser />}
+            icon={FiUser}
           />
-          <InputTexts
+          <Input
             {...getFieldProps('email')}
             type='email'
             placeholder='Email Address'
@@ -77,9 +77,9 @@ const SignupPage: React.FC<Props> = (props) => {
             autoComplete='email'
             touched={touched.email}
             errors={errors.email}
-            icon={<SiMailDotRu />}
+            icon={SiMailDotRu}
           />
-          <InputTexts
+          <Input
             {...getFieldProps('password')}
             type={showPass ? 'text' : 'password'}
             placeholder='Password'
@@ -88,7 +88,7 @@ const SignupPage: React.FC<Props> = (props) => {
             autoComplete='current-password'
             touched={touched.password}
             errors={errors.password}
-            icon={<FiLock />}
+            icon={FiLock}
           />
           <div className='flex flex-col w-full justify-around'>
             <div className='items-center flex'>
