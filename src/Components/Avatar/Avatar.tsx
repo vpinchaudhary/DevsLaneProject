@@ -36,7 +36,7 @@ const Avatar: React.FC<Props> = (props) => {
   }
 
   return (
-    <div className='m-2 relative inline-block'>
+    <div className='m-2 relative inline-block rounded-full border-white border-4'>
       {!props.image ? (
         <div
           className={`${round} ${size} text-xl flex justify-center items-center text-white bg-gray-400 uppercase`}

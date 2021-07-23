@@ -1,4 +1,4 @@
-import React, { ReactPropTypes } from 'react'
+import React from 'react'
 
 export interface Props {
   width?: number
@@ -64,7 +64,7 @@ const ProgressBar: React.FC<Props> = (props) => {
 ProgressBar.defaultProps = {
   width: 0,
   theme: 'blue',
-  gradient: true,
+  gradient: false,
   size: 'small',
 }
 
