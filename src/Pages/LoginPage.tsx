@@ -8,6 +8,7 @@ import { useFormik } from 'formik'
 import Input from '../Components/Input/Input'
 import AuthFooter from '../Components/AuthFooter'
 import { Switch } from '@headlessui/react'
+import { getLogin } from '../api'
 
 interface Props {}
 
@@ -27,10 +28,15 @@ const LoginPage: React.FC<Props> = (props) => {
       email: '',
       password: '',
     },
-    onSubmit: () => {
-      setTimeout(() => {
-        history.push('/dashboard')
-      }, 2000)
+    onSubmit: (data) => {
+      getLogin(data)
+        .then(() => {
+          history.push('/dashboard')
+          window.location.reload()
+        })
+        .catch(() => {
+          window.location.reload()
+        })
     },
     validationSchema: yup.object().shape({
       email: yup.string().email().required(),

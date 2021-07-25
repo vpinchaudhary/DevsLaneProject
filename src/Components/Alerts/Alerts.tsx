@@ -69,7 +69,7 @@ const Alerts: React.FC<Props> = (props) => {
 }
 
 Alerts.defaultProps = {
-  title: 'Primary!',
+  title: '',
   message: '',
   theme: 'primary',
   outline: false,

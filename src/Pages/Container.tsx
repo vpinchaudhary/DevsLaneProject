@@ -1,22 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Switch } from 'react-router-dom'
 import Header from '../Components/Header'
 import HeaderBanner from '../Components/HeaderBanner'
-import Sidebar from '../Components/Sidebar'
+import Dashboard from './Dashboard'
 
 interface Props {}
 
 const Container: React.FC<Props> = (props) => {
+  const [query, setQuery] = useState('')
   return (
     <Switch>
       <>
         <div id='header' className='sticky top-0 w-full'>
-          <Header />
+          <Header setQuery={setQuery} />
           <HeaderBanner />
         </div>
-        <div className='flex'>
-          <Sidebar />
-        </div>
+        <Dashboard query={query} />
       </>
     </Switch>
   )

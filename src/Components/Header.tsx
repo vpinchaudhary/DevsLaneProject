@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction, useState } from 'react'
 import { RiSearchLine } from 'react-icons/ri'
 import { FiMail, FiBell } from 'react-icons/fi'
 import { FaCircle } from 'react-icons/fa'
 import { Menu } from '@headlessui/react'
 
-interface Props {}
+interface Props {
+  setQuery: Dispatch<SetStateAction<string>>
+}
 
-const Header: React.FC<Props> = (props) => {
+const Header: React.FC<Props> = ({ setQuery }) => {
+  const [value, setValue] = useState('')
   return (
     <div className='relative w-full flex bg-secondary-200 py-2 px-4'>
       <div className='flex w-full items-center'>
@@ -79,6 +82,11 @@ const Header: React.FC<Props> = (props) => {
         <span className='hidden md:flex relative w-full'>
           <RiSearchLine className='top-2 absolute block left-16 mx-2 text-2xl text-white' />
           <input
+            onChange={(e) => {
+              setValue(e.target.value)
+              setQuery(e.target.value)
+            }}
+            value={value}
             type='text'
             className='ml-16 w-1/4 py-2 pr-2 pl-10 text-heading-100 bg-secondary-100 outline-none rounded-md'
             placeholder='Search...'

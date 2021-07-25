@@ -1,6 +1,7 @@
 import React from 'react'
 import { Menu } from '@headlessui/react'
 import { HiChevronDown } from 'react-icons/hi'
+import { logOut } from '../api'
 
 interface Props {}
 
@@ -80,6 +81,16 @@ const HeaderBanner: React.FC<Props> = (props) => {
                     className={`text-gray-600 group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                   >
                     Share
+                  </button>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    className={`text-gray-600 group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    onClick={logOut}
+                  >
+                    Logout
                   </button>
                 )}
               </Menu.Item>
