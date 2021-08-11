@@ -3,9 +3,8 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import ErrorPage from './Pages/ErrorPage'
 import { me } from './api/user'
 import { getToken } from './api/base'
-import { useDispatch } from 'react-redux'
 import { useAppSelector } from './redux'
-import { setMe } from './actions/auth'
+import { authActions } from './actions/auth'
 
 const Container = lazy(() => import('./Pages/Container'))
 const AuthPage = lazy(() => import('./Pages/AuthPage'))
@@ -16,14 +15,13 @@ const App: React.FC<Props> = () => {
   const user = useAppSelector(
     (state) => state.auth.id && state.user.byId[state.auth.id]
   )
-  const dispatch = useDispatch()
   const token = getToken()
   useEffect(() => {
     if (!token) {
       return
     }
     me().then((response) => {
-      dispatch(setMe(response))
+      authActions.me(response)
     })
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 

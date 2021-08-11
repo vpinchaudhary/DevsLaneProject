@@ -1,5 +1,5 @@
 import { Reducer } from 'redux'
-import { SET_LOGIN, SET_ME } from '../actions/auth'
+import { SET_LOGIN, SET_ME } from '../actions/constants'
 import { User } from '../modal/User'
 
 export interface UserState {

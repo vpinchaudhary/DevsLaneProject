@@ -1,5 +1,5 @@
 import { Reducer } from 'redux'
-import { SET_GROUPS, SET_GROUP_QUERY } from '../actions/groups'
+import { SET_GROUPS, SET_GROUP_QUERY } from '../actions/constants'
 import { Group } from '../modal/Group'
 
 export interface GroupState {

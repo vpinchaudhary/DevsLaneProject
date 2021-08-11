@@ -9,8 +9,7 @@ import Input from '../Components/Input/Input'
 import AuthFooter from '../Components/AuthFooter'
 import { Switch } from '@headlessui/react'
 import { getLogin } from '../api/auth'
-import { store } from '../redux'
-import { setLogin } from '../actions/auth'
+import { authActions } from '../actions/auth'
 
 interface Props {}
 
@@ -31,8 +30,8 @@ const LoginPage: React.FC<Props> = (props) => {
     },
     onSubmit: (data) => {
       getLogin(data).then((u) => {
+        authActions.login(u)
         history.push('/dashboard')
-        store.dispatch(setLogin(u))
       })
     },
     validationSchema: yup.object().shape({

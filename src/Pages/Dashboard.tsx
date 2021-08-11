@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { HiLockClosed, HiLockOpen } from 'react-icons/hi'
 import { RiSearchLine } from 'react-icons/ri'
 import { useDispatch } from 'react-redux'
-import { setGroups } from '../actions/groups'
+import { groupActions, setGroups } from '../actions/groups'
 import { fetchGroup } from '../api/group'
 import Input from '../Components/Input/Input'
 import { Group } from '../modal/Group'
@@ -18,13 +18,12 @@ const Dashboard: React.FC<Props> = () => {
     return groups
   })
   const user = useAppSelector((state) => state.user.byId[state.auth.id!])
-  const dispatch = useDispatch()
 
   useEffect(() => {
     fetchGroup({ status: 'all-groups', query }).then((response) => {
-      dispatch(setGroups(query, response))
+      groupActions.groups(query, response)
     })
-  }, [query, dispatch])
+  }, [query])
 
   return (
     <div className=''>
@@ -33,7 +32,7 @@ const Dashboard: React.FC<Props> = () => {
           <RiSearchLine className='top-2 absolute block left-16 mx-2 text-2xl text-white' />
           <Input
             onChange={(e) => {
-              dispatch({ type: 'SET_GROUP_QUERY', payload: e.target.value })
+              groupActions.groupQuery(e.target.value)
             }}
             value={query}
             type='text'
