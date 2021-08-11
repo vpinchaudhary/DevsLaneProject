@@ -8,14 +8,15 @@ import { useFormik } from 'formik'
 import Input from '../Components/Input/Input'
 import AuthFooter from '../Components/AuthFooter'
 import { Switch } from '@headlessui/react'
-import { getLogin } from '../api'
+import { getLogin } from '../api/auth'
+import { store } from '../redux'
+import { setLogin } from '../actions/auth'
 
 interface Props {}
 
 const LoginPage: React.FC<Props> = (props) => {
   const [showPass, setShowPass] = useState(false)
   const history = useHistory()
-
   //using useFormik to make form data which contains email and password
   const {
     getFieldProps,
@@ -29,14 +30,10 @@ const LoginPage: React.FC<Props> = (props) => {
       password: '',
     },
     onSubmit: (data) => {
-      getLogin(data)
-        .then(() => {
-          history.push('/dashboard')
-          window.location.reload()
-        })
-        .catch(() => {
-          window.location.reload()
-        })
+      getLogin(data).then((u) => {
+        history.push('/dashboard')
+        store.dispatch(setLogin(u))
+      })
     },
     validationSchema: yup.object().shape({
       email: yup.string().email().required(),

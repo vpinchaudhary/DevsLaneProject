@@ -1,14 +1,15 @@
-import React, { Dispatch, SetStateAction, useState } from 'react'
+import React, { useState } from 'react'
 import { RiSearchLine } from 'react-icons/ri'
 import { FiMail, FiBell } from 'react-icons/fi'
 import { FaCircle } from 'react-icons/fa'
-import { Menu } from '@headlessui/react'
+import MenuList from './Menu/MenuList'
+import MenuItem from './Menu/MenuItem'
+import { logOut } from '../api/auth'
+import { Redirect } from 'react-router-dom'
 
-interface Props {
-  setQuery: Dispatch<SetStateAction<string>>
-}
+interface Props {}
 
-const Header: React.FC<Props> = ({ setQuery }) => {
+const Header: React.FC<Props> = () => {
   const [value, setValue] = useState('')
   return (
     <div className='relative w-full flex bg-secondary-200 py-2 px-4'>
@@ -84,7 +85,6 @@ const Header: React.FC<Props> = ({ setQuery }) => {
           <input
             onChange={(e) => {
               setValue(e.target.value)
-              setQuery(e.target.value)
             }}
             value={value}
             type='text'
@@ -93,69 +93,73 @@ const Header: React.FC<Props> = ({ setQuery }) => {
           />
         </span>
       </div>
-      <div className='flex md:mt-2 space-x-4 absolute right-4'>
-        <RiSearchLine className='md:hidden text-2xl text-white' />
-        <div>
-          <Menu as='div' className='relative'>
-            <Menu.Button>
-              <div>
+      <div className='relative -top-2'>
+        <div className='flex items-center md:mt-2 space-x-4 absolute right-4'>
+          <RiSearchLine className='md:hidden text-2xl text-white' />
+          <div className='relative'>
+            <MenuList
+              title={
+                <div className='h-6 w-6'>
+                  <img
+                    src='https://designreset.com/cork/ltr/demo4/assets/img/ca.png'
+                    alt=''
+                  />
+                </div>
+              }
+              className=''
+            >
+              <MenuItem>
                 <img
                   className='h-6 w-6'
-                  src='https://designreset.com/cork/ltr/demo4/assets/img/ca.png'
+                  src='https://designreset.com/cork/ltr/demo4/assets/img/fr.png'
                   alt=''
                 />
-              </div>
-            </Menu.Button>
-            <Menu.Items className='absolute  flex flex-col w-32 shadow-md rounded-md bg-white'>
-              <Menu.Item>
-                {({ active }) => (
-                  <div className='flex w-full justify-between px-2 py-3'>
-                    <img
-                      className='h-6 w-6'
-                      src='https://designreset.com/cork/ltr/demo4/assets/img/fr.png'
-                      alt=''
-                    />
-                    <h3>French</h3>
-                  </div>
-                )}
-              </Menu.Item>
-              <Menu.Item>
-                {({ active }) => (
-                  <div className='flex w-full justify-between px-2 py-3'>
-                    <img
-                      className='h-6 w-6'
-                      src='https://designreset.com/cork/ltr/demo4/assets/img/jp.png'
-                      alt=''
-                    />
-                    <h3>Japanese</h3>
-                  </div>
-                )}
-              </Menu.Item>
-              <Menu.Item>
-                {({ active }) => (
-                  <div className='flex w-full justify-between px-2 py-3'>
-                    <img
-                      className='h-6 w-6'
-                      src='https://designreset.com/cork/ltr/demo4/assets/img/de.png'
-                      alt=''
-                    />
-                    <h3>German</h3>
-                  </div>
-                )}
-              </Menu.Item>
-            </Menu.Items>
-          </Menu>
+                <h3>French</h3>
+              </MenuItem>
+              <MenuItem>
+                <img
+                  className='h-6 w-6'
+                  src='https://designreset.com/cork/ltr/demo4/assets/img/jp.png'
+                  alt=''
+                />
+                <h3>Japanese</h3>
+              </MenuItem>
+              <MenuItem>
+                <img
+                  className='h-6 w-6'
+                  src='https://designreset.com/cork/ltr/demo4/assets/img/de.png'
+                  alt=''
+                />
+                <h3>German</h3>
+              </MenuItem>
+            </MenuList>
+          </div>
+          <FiMail className='text-2xl text-white' />
+          <div className='relative'>
+            <FaCircle className='absolute text-xs right-0 text-green-500' />
+            <FiBell className='text-2xl text-white' />
+          </div>
+          <div>
+            <MenuList
+              title={
+                <div className='h-6 w-6'>
+                  <img
+                    className='rounded-md'
+                    src='https://designreset.com/cork/ltr/demo4/assets/img/profile-16.jpeg'
+                    alt=''
+                  />
+                </div>
+              }
+            >
+              <MenuItem onClick={() => <Redirect to='/profile' />}>
+                Profile
+              </MenuItem>
+              <MenuItem>Inbox</MenuItem>
+              <MenuItem>Lock Screen</MenuItem>
+              <MenuItem onClick={logOut}>Sign Out</MenuItem>
+            </MenuList>
+          </div>
         </div>
-        <FiMail className='text-2xl text-white' />
-        <div className='relative'>
-          <FaCircle className='absolute text-xs right-0 text-green-500' />
-          <FiBell className='text-2xl text-white' />
-        </div>
-        <img
-          className='h-6 w-6 rounded-md'
-          src='https://designreset.com/cork/ltr/demo4/assets/img/profile-16.jpeg'
-          alt=''
-        />
       </div>
     </div>
   )
