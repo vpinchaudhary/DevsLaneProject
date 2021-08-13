@@ -2,22 +2,23 @@ import React, { useEffect } from 'react'
 import { HiLockClosed, HiLockOpen } from 'react-icons/hi'
 import { RiSearchLine } from 'react-icons/ri'
 import { useDispatch } from 'react-redux'
-import { groupActions, setGroups } from '../actions/groups'
+import { groupActions, setGroups } from '../actions/groupsAction'
 import { fetchGroup } from '../api/group'
 import Input from '../Components/Input/Input'
 import { Group } from '../modal/Group'
 import { useAppSelector } from '../redux'
+import {
+  groupListSelector,
+  GroupQuerySelector,
+} from '../selectors/groupsSelector'
+import { currentUserSelector } from '../selectors/userSelector'
 
 interface Props {}
 
 const Dashboard: React.FC<Props> = () => {
-  const query = useAppSelector((state) => state.groups.query)
-  const dataList = useAppSelector((state) => {
-    const groupIds = state.groups.queryMap[state.groups.query] || []
-    const groups = groupIds.map((id) => state.groups.byId[id])
-    return groups
-  })
-  const user = useAppSelector((state) => state.user.byId[state.auth.id!])
+  const query = useAppSelector(GroupQuerySelector)
+  const dataList = useAppSelector(groupListSelector)
+  const user = useAppSelector(currentUserSelector)
 
   useEffect(() => {
     fetchGroup({ status: 'all-groups', query }).then((response) => {

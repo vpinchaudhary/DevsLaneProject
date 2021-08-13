@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux'
 import { Group } from '../modal/Group'
 import { store } from '../redux'
-import { SET_GROUPS, SET_GROUP_QUERY } from './constants'
+import { SET_GROUPS, SET_GROUP_QUERY } from './actionConstants'
 
 export const setGroupQuery = (query: string) => ({
   type: SET_GROUP_QUERY,

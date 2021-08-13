@@ -16,6 +16,6 @@ export const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
-type AppStore = ReturnType<typeof reducer>
+export type AppStore = ReturnType<typeof reducer>
 
 export const useAppSelector: TypedUseSelectorHook<AppStore> = useSelector

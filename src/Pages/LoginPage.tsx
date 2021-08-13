@@ -9,7 +9,7 @@ import Input from '../Components/Input/Input'
 import AuthFooter from '../Components/AuthFooter'
 import { Switch } from '@headlessui/react'
 import { getLogin } from '../api/auth'
-import { authActions } from '../actions/auth'
+import { authActions } from '../actions/authAction'
 
 interface Props {}
 

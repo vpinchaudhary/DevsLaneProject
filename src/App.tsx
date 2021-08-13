@@ -4,7 +4,8 @@ import ErrorPage from './Pages/ErrorPage'
 import { me } from './api/user'
 import { getToken } from './api/base'
 import { useAppSelector } from './redux'
-import { authActions } from './actions/auth'
+import { authActions } from './actions/authAction'
+import { adminUser } from './selectors/authSelector'
 
 const Container = lazy(() => import('./Pages/Container'))
 const AuthPage = lazy(() => import('./Pages/AuthPage'))
@@ -12,9 +13,7 @@ const AuthPage = lazy(() => import('./Pages/AuthPage'))
 interface Props {}
 
 const App: React.FC<Props> = () => {
-  const user = useAppSelector(
-    (state) => state.auth.id && state.user.byId[state.auth.id]
-  )
+  const user = useAppSelector(adminUser)
   const token = getToken()
   useEffect(() => {
     if (!token) {
