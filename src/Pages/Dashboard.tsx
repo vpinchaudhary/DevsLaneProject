@@ -9,14 +9,14 @@ import { Group } from '../modal/Group'
 import { useAppSelector } from '../redux'
 import {
   groupListSelector,
-  GroupQuerySelector,
+  groupQuerySelector,
 } from '../selectors/groupsSelector'
 import { currentUserSelector } from '../selectors/userSelector'
 
 interface Props {}
 
 const Dashboard: React.FC<Props> = () => {
-  const query = useAppSelector(GroupQuerySelector)
+  const query = useAppSelector(groupQuerySelector)
   const dataList = useAppSelector(groupListSelector)
   const user = useAppSelector(currentUserSelector)
 
