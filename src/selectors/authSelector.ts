@@ -1,5 +1,5 @@
 import { authStateSelector } from './appSelector'
-import { userIdSelector } from './userSelector'
+import { userIdSelector } from './userIdSelector'
 import { createSelector } from 'reselect'
 
 export const authIdSelector = createSelector(

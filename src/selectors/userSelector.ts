@@ -1,12 +1,6 @@
-import { AppStore } from '../redux'
-import { userStateSelector } from './appSelector'
 import { authIdSelector } from './authSelector'
 import { createSelector } from 'reselect'
-
-export const userIdSelector = createSelector(
-  [userStateSelector],
-  (userState) => userState.byId
-)
+import { userIdSelector } from './userIdSelector'
 
 export const currentUserSelector = createSelector(
   [userIdSelector, authIdSelector],
